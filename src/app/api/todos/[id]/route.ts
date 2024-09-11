@@ -51,6 +51,27 @@ export async function PUT(request: Request, {params}: Args) {
     }catch(error){
         return NextResponse.json(error, {status: 400})
     }
-   
-    
+}
+
+export async function DELETE(request: Request, { params }: Args) {
+    // Obtener el id desde los parámetros
+    const todo = await getTodo(params.id);
+
+    // Si el todo no existe, retornar un mensaje de error
+    if (!todo) {
+        return NextResponse.json({ message: `Todo with id: ${params.id} doesn't exist` }, { status: 404 });
+    }
+
+    try {
+        // Eliminar el todo de la base de datos
+        await prisma.todo.delete({
+            where: { id: params.id },
+        });
+
+        // Retornar una respuesta indicando que el todo fue eliminado
+        return NextResponse.json({ message: `Todo with id: ${params.id} was successfully deleted` }, { status: 200 });
+    } catch (error) {
+        // Manejar cualquier error que ocurra durante la operación de eliminación
+        return NextResponse.json({ message: 'Error deleting Todo', error }, { status: 500 });
+    }
 }
