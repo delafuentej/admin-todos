@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { TodosGrid } from "@/todos";
 import { Metadata } from "next";
 //'use client';
 //import { useEffect } from "react";
@@ -23,7 +24,7 @@ export default async function RestTodos() {
   
   return (
     <div>
-     {JSON.stringify(todos)}
+     <TodosGrid todos={todos}/>
     </div>
   );
 }
