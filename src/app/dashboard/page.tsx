@@ -7,6 +7,10 @@ export default function Dashboard() {
             
 
        <WidgetItem />
+       <WidgetItem />
+       <WidgetItem />
+       <WidgetItem />
+       <WidgetItem />
     {/* TODO: Fin <WidgetItem /> */}
 
   </div>  
