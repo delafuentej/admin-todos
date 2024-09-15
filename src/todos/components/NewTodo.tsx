@@ -3,7 +3,7 @@
 import { FormEvent, useState} from "react";
 import { IoTrashOutline } from "react-icons/io5";
 //import * as todosApi from "../helpers/todos";
-import { addTodo } from "../actions/todo-actions";
+import { addTodo, deleteCompleted} from "../actions/todo-actions";
 //import { useRouter } from "next/navigation";
 
 
@@ -24,10 +24,11 @@ export const NewTodo = () => {
 
       //console.log('form submitted', description);
   }
-  const deleteCompleted = async() => {
-   // await todosApi.deleteCompletedTodos();
-    //router.refresh();
-  }
+  // const deleteCompleted = async() => {
+    
+  //  // await todosApi.deleteCompletedTodos();
+  //   //router.refresh();
+  // }
    
 
   return (
@@ -47,7 +48,7 @@ export const NewTodo = () => {
       <span className='flex flex-1'></span>
 
       <button 
-         onClick={ deleteCompleted }
+         onClick={()=> deleteCompleted()}
         type='button' 
         className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
         <IoTrashOutline />
