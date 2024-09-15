@@ -10,7 +10,7 @@ const sleep = (seconds: number = 0) : Promise<boolean>=> {
 
 export const updateTodo = async(id: string, complete: boolean) :Promise<Todo>=> {
 
-    await sleep(2);
+    await sleep(1);
     
     const body = {complete: complete};
 
