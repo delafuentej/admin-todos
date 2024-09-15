@@ -1,9 +1,9 @@
+export const dynamic = 'force-dynamic';
+
 import prisma from "@/lib/prisma";
 import { TodosGrid } from "@/todos";
 import { NewTodo } from "@/todos/components/NewTodo";
 import { Metadata } from "next";
-//'use client';
-//import { useEffect } from "react";
 
 export const metadata: Metadata = {
   title : "Todo's List",
@@ -13,16 +13,10 @@ export const metadata: Metadata = {
   
 export default async function ServerTodos() {
 
+
   const todos = await prisma.todo.findMany({
     orderBy: {description: 'asc'}
   })
-  
-
-  // useEffect(()=>{
-  //     fetch('/api/todos')
-  //     .then( res => res.json())
-  //     .then(console.log)
-  // }, []);
   
   return (
     <div>
