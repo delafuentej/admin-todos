@@ -4,6 +4,7 @@ import Image from "next/image"
 import { IoAddCircleOutline, IoTrashOutline } from "react-icons/io5"
 import { StarRating } from "./StarRating";
 import { addProductToCart } from "@/shopping-cart/actions/actions";
+import { useRouter } from "next/navigation";
 
 interface Props {
   id    : string;
@@ -14,8 +15,11 @@ interface Props {
 }
 export const ProductCard = ({id, name, price, rating, image}: Props) => {
 
+  const router = useRouter();
+
   const onAddToCart = () => {
-    addProductToCart(id)
+    addProductToCart(id);
+    router.refresh();
   }
   return (
     <div 
@@ -58,7 +62,7 @@ export const ProductCard = ({id, name, price, rating, image}: Props) => {
 
         {/* Price and Add to Cart */}
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-white">{price}</span>
+          <span className="text-2xl font-bold text-white">{price.toFixed(2)}</span>
           
           <div className="flex">
             <button
