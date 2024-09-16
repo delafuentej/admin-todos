@@ -29,4 +29,11 @@ export const addProductToCart = (id:string) => {
         cookieCart[id] = 1;
     }
     setCookie('cart', JSON.stringify(cookieCart));
+}  
+
+export const removeProductFromCart = (id:string) => {
+    const cookieCart = getCookieCart();
+    delete cookieCart[id];
+    setCookie('cart', JSON.stringify(cookieCart));
+
 }
