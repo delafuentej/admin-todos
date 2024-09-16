@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { products, type Product } from "@/products/data/products";
 import { ItemCard } from "@/shopping-cart";
+import { WidgetItem } from "@/components";
 
 export const metadata: Metadata = {
  title: 'Shopping-Cart',
@@ -28,10 +29,13 @@ const getProductsInCart = (cart: {[id: string]: number}): ProductInCart[] => {
 
 
 export default function Cart() {
+  
   const cookiesStore = cookies();
   const cart = JSON.parse( cookiesStore.get('cart')?.value ?? '{}') as {[id:string]: number};
 
   const productsInCart = getProductsInCart(cart);
+
+  const totalToPay= productsInCart.reduce( (prev, current) => ( current.product.price * current.quantity) + prev ,0);
 
   return (
     <div>
@@ -48,7 +52,17 @@ export default function Cart() {
               />
             ))
           }
+        </div>
+        <div className="flex flex-col w-full sm:w-4/12">
+            <WidgetItem
+              title='Total Amount'
+            >
+              <div className="mt-2 flex justify-center gap-4">
+                <h3 className="text-3xl font-bold text-gray-700">{`${(totalToPay * 1.15).toFixed(2)}`}  </h3>
+              </div>
+              <span className="font-bold text-center text-gray-500">{`Taxes (15%): ${(totalToPay * 0.15).toFixed(2)}`} </span>
 
+            </WidgetItem>
         </div>
 
       </div>
