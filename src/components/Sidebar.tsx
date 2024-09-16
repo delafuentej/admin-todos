@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CiLogout} from 'react-icons/ci';
 import {  IoCalendarOutline, IoCheckboxOutline, IoListOutline } from 'react-icons/io5';
+import { LiaCookieSolid } from "react-icons/lia";
 import { SidebarItem } from './SidebarItem';
 
 
@@ -21,7 +22,13 @@ const menuItems = [
     icon: <IoListOutline />,
     title: 'Server Actions',
     path: '/dashboard/server-todos'
-  }
+  },
+  {
+    icon: <LiaCookieSolid />,
+    title: 'Cookies',
+    path: '/dashboard/cookies'
+  },
+
 
 ]
 
