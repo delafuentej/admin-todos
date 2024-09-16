@@ -1,5 +1,6 @@
 import { Tabbar } from "@/components";
 import { Metadata } from "next";
+import { cookies } from 'next/headers';
 
 
 export const metadata : Metadata= {
@@ -7,11 +8,17 @@ export const metadata : Metadata= {
  description: 'SEO Title',
 };
 export default function Cookies() {
+  const cookieStore = cookies();
+  const cookieTab = Number(cookieStore.get('selectedTab')?.value ?? '1');
+
+  const allCookies = cookieStore.getAll();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {JSON.stringify(allCookies)}
       <div className="flex flex-col">
         <span className="text-3xl">Tabs</span>
-        <Tabbar/>
+        <Tabbar currentTab={cookieTab}/>
 
 
       </div>
