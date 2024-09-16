@@ -37,3 +37,18 @@ export const removeProductFromCart = (id:string) => {
     setCookie('cart', JSON.stringify(cookieCart));
 
 }
+
+// export const removeProductFromCart = (id: string) => {
+//     const cookieCart = getCookieCart();
+
+//     if (cookieCart[id]) {
+//         // Si la cantidad del producto es mayor a 1, reduce en 1
+//         if (cookieCart[id] > 1) {
+//             cookieCart[id] -= 1;
+//         } else {
+//             // Si la cantidad es 1 o menos, elimina el producto del carrito
+//             delete cookieCart[id];
+//         }
+//         setCookie('cart', JSON.stringify(cookieCart));
+//     }
+// }

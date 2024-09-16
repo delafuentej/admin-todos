@@ -24,7 +24,7 @@ export const ProductCard = ({id, name, price, rating, image}: Props) => {
 
   const onRemoveFromCart = () => {
     removeProductFromCart(id);
-    router.refresh()
+    router.refresh();
   }
 
   return (
