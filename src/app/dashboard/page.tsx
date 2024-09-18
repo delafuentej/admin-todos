@@ -13,7 +13,7 @@ export default async function Dashboard() {
 
   return (
     
-    <div className="grid gap-6 grid-cols-1  sm:grid-cols-2 ">
+    <div className="grid gap-6 grid-cols-1">
             
       <WidgetItem
         title='Logged-in User (Server Side)'
@@ -29,6 +29,9 @@ export default async function Dashboard() {
           />
           <span>{session.user?.name}</span>
           <span>{session.user?.email}</span>
+          <div>
+            {JSON.stringify(session)}
+          </div>
         </div>
       </WidgetItem>
      
