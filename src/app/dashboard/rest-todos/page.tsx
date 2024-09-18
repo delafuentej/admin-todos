@@ -1,7 +1,7 @@
   export const dynamic = 'force-dynamic';
   export const revalidate = 0;
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import { getUserSessionServer } from "@/auth/actions/auth-actions";
 import prisma from "@/lib/prisma";
 import { TodosGrid } from "@/todos";
