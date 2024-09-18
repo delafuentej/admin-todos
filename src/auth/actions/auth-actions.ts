@@ -1,5 +1,12 @@
 import prisma from "@/lib/prisma";
 import bcrypt from 'bcryptjs';
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+
+export const getUserSessionServer = async() => {
+    const session = await getServerSession(authOptions);
+    return session?.user;
+}
 
 export const signInEmailWithPassword = async(email: string, password: string) => {
     if(!email || !password) return null;
@@ -12,11 +19,12 @@ export const signInEmailWithPassword = async(email: string, password: string) =>
     }
     if( !bcrypt.compareSync(password, user.password ?? '')) {
         return null;
-    } 
-    return user;
+        
 };
+return user;
+}
 
-export const createUser= async(email: string, password:string) => {
+ const createUser= async(email: string, password:string) => {
 
     const newUser = await prisma.user.create({
         data: {

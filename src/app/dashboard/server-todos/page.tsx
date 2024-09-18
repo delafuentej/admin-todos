@@ -5,6 +5,9 @@ import prisma from "@/lib/prisma";
 import { TodosGrid } from "@/todos";
 import { NewTodo } from "@/todos/components/NewTodo";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { getUserSessionServer } from '../../../auth/actions/auth-actions';
+
 
 export const metadata: Metadata = {
   title : "Todo's List",
@@ -14,10 +17,16 @@ export const metadata: Metadata = {
   
 export default async function ServerTodos() {
 
+  const user = await getUserSessionServer();
+
+  if(!user) redirect('/api/auth/signin');
 
   const todos = await prisma.todo.findMany({
+    where: {userId: user.id},
     orderBy: {description: 'asc'}
   })
+  
+  
   
   return (
     <div>
