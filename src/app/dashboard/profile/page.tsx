@@ -16,7 +16,7 @@ export default function Profile() {
     <div className="flex flex-col w-full justify-center items-center">
       <h1 className="text-5xl text-center">Profile  Page</h1>
       <hr/>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-center">
        <Image 
        className="rounded-full mb-4 m-auto"
        src={session?.user?.image ?? ''}
@@ -24,9 +24,10 @@ export default function Profile() {
        height={150}
        alt='Foto user'
        />
+        <span className="text-3xl  text-gray-500">{session?.user?.id ?? 'No UserId'}</span>
         <span className="text-3xl  text-gray-500">{session?.user?.name ?? 'No Name'}</span>
         <span className="text-2xl text-center">{session?.user?.email ?? 'No Email'}</span>
-
+        <span className="text-2xl text-center capitalize">{session?.user?.roles?.join(', ') ?? ['user']}</span>
       </div>
     </div>
   );
