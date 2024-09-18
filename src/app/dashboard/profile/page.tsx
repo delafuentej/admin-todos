@@ -3,7 +3,7 @@
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useEffect } from "react";
+
 
 
 
@@ -11,9 +11,7 @@ export default function Profile() {
 
     const {data: session} = useSession();
     
-    useEffect(()=>{
-            console.log('client side');
-    },[])
+  
   return (
     <div className="flex flex-col w-full justify-center items-center">
       <h1 className="text-5xl text-center">Profile  Page</h1>
