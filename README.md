@@ -17,6 +17,10 @@ npx prisma generate
 
 7. Execute SEED [to create local DB(localhost:3000/api/seed)].
 
+## Default User:
+__user:__'test1@gmail.com
+__password:__Qwe123
+
 # Prisma commands
 ```
 npx prisma init
