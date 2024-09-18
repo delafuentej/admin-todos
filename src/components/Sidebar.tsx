@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CiLogout} from 'react-icons/ci';
-import {  IoBasketOutline, IoCalendarOutline, IoCartOutline, IoCheckboxOutline, IoListOutline } from 'react-icons/io5';
+import {  IoBasketOutline, IoCalendarOutline, IoCartOutline, IoCheckboxOutline, IoListOutline, IoPersonOutline } from 'react-icons/io5';
 import { LiaCookieSolid } from "react-icons/lia";
 import { SidebarItem } from './SidebarItem';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
@@ -40,6 +40,12 @@ const menuItems = [
     title: 'Cart',
     path: '/dashboard/cart'
   },
+  {
+    icon: <IoPersonOutline/>,
+    title: 'Profile',
+    path: '/dashboard/profile'
+  },
+
 
 ]
 
